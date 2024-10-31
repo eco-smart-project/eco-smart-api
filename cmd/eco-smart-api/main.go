@@ -43,6 +43,11 @@ func NewApp(cfg *config.Config) *App {
 	userHandler := handler.NewUserHandler(userController)
 	userHandler.RegisterRoutes(v1)
 
+	collectionPointRepo := repository.NewCollectionPointRepository(core.GetDB())
+	collectionPointController := controller.NewCollectionPointController(collectionPointRepo)
+	collectionPointHandler := handler.NewCollectionPointHandler(collectionPointController)
+	collectionPointHandler.RegisterRoutes(v1)
+
 	return app
 }
 
