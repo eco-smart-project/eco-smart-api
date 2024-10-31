@@ -16,8 +16,23 @@ services:
     networks:
       - host
 
+  # api:
+  #   build:
+  #     context: . # assuming Dockerfile is in the root of your project
+  #   container_name: eco-smart-api
+  #   restart: unless-stopped
+  #   depends_on:
+  #     - postgresql
+  #   environment:
+  #     DATABASE_URL: postgres://eco-smart-api:82KQ6KkyLo5@postgresql:5432/eco-smart
+  #   ports:
+  #     - 8080:8080 # adjust this based on the port your API uses
+  #   networks:
+  #     - host
+
 volumes:
   postgresql:
+
 
 networks:
   host:

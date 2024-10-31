@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"eco-smart-api/model"
 	"eco-smart-api/repository"
 	"encoding/json"
 	"net/http"
@@ -41,7 +42,14 @@ func (cpc *CollectionPointController) GetCollectionPointHandler(w http.ResponseW
 		return
 	}
 
-	json.NewEncoder(w).Encode(point)
+	response := model.Response{
+		Message: "OK",
+		Data:    point,
+		Code:    0,
+		Status:  http.StatusOK,
+	}
+
+	json.NewEncoder(w).Encode(response)
 }
 
 func (cpc *CollectionPointController) GetCollectionPointsHandler(w http.ResponseWriter, r *http.Request) {
@@ -57,5 +65,12 @@ func (cpc *CollectionPointController) GetCollectionPointsHandler(w http.Response
 		return
 	}
 
-	json.NewEncoder(w).Encode(points)
+	response := model.Response{
+		Message: "OK",
+		Data:    points,
+		Code:    0,
+		Status:  http.StatusOK,
+	}
+
+	json.NewEncoder(w).Encode(response)
 }
